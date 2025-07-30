@@ -3,12 +3,6 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { UsersModule } from './users/users.module';
-import { AuthTokensModule } from './auth-tokens/auth-tokens.module';
-import { ItemsModule } from './items/items.module';
-import { BidsModule } from './bids/bids.module';
-import { PaymentsModule } from './payments/payments.module';
-import { BiddingSessionsModule } from './bidding-sessions/bidding-sessions.module';
 
 @Module({
     imports: [
@@ -26,12 +20,6 @@ import { BiddingSessionsModule } from './bidding-sessions/bidding-sessions.modul
                 autoLoadEntities: true,
             }),
         }),
-        UsersModule,
-        AuthTokensModule,
-        ItemsModule,
-        BidsModule,
-        PaymentsModule,
-        BiddingSessionsModule,
     ],
     controllers: [AppController],
     providers: [AppService],

@@ -3,6 +3,10 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule, TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { ConfigModule, ConfigService } from '@nestjs/config';
+import { UsersModule } from './users/users.module';
+import { AuthTokensModule } from './auth-tokens/auth-tokens.module';
+import { AuthModule } from './auth/auth.module';
+import { EmailModule } from './email/email.module';
 
 @Module({
   imports: [
@@ -21,6 +25,10 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
         synchronize: cfg.get<string>('NODE_ENV') === 'development',
       }),
     }),
+    UsersModule,
+    AuthTokensModule,
+    AuthModule,
+    EmailModule,
   ],
   controllers: [AppController],
   providers: [AppService],

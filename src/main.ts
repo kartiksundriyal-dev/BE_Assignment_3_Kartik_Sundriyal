@@ -1,12 +1,19 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
+import { ConsoleLogger, ValidationPipe } from '@nestjs/common';
 import { APP_PORT } from './config/constants';
-import { ConsoleLogger } from '@nestjs/common';
 
 const logger = new ConsoleLogger('Bootstrap');
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(
+    new ValidationPipe({
+      transform: true,
+      whitelist: true,
+      forbidNonWhitelisted: true,
+    }),
+  );
   await app.listen(process.env.PORT ?? APP_PORT);
 }
 

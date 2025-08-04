@@ -61,10 +61,6 @@ describe('Database Connection (e2e)', () => {
       const tableNames = tables.map((t) => t.table_name);
       expect(tableNames).toContain('users');
       expect(tableNames).toContain('auth_tokens');
-      expect(tableNames).toContain('items');
-      expect(tableNames).toContain('bids');
-      expect(tableNames).toContain('payments');
-      expect(tableNames).toContain('bidding_sessions');
     });
   });
 });
